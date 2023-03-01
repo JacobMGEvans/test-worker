@@ -1,0 +1,24 @@
+name = "test-worker2"
+main = "src/index.ts"
+compatibility_date = "2022-09-01"
+route = "jacobmgevans.com/test"
+usage_model = "bundled"
+env = {}
+
+[[migrations]]
+tag = "v1"
+new_classes = ["Durability"]
+[[migrations]]
+tag = "v2"
+new_classes = ["Durabilities"]
+
+[triggers]
+crons = []
+
+[vars]
+ANOTHER = "thing"
+SOMETHING = "asdasdfasdf"
+
+[[durable_objects.bindings]]
+name = "DURABLE_TEST"
+class_name = "Durability"
