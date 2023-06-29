@@ -1,8 +1,9 @@
-var Durabilities = class {
-  constructor(state, env) {
+const Durabilities = class {
+  state: any;
+  constructor(state: DurableObjectState, env: Env) {
     this.state = state;
   }
-  async fetch(request) {
+  async fetch(request: Request) {
     let url = new URL(request.url);
     let value = (await this.state.storage.get("value")) || 0;
     switch (url.pathname) {
@@ -21,9 +22,9 @@ var Durabilities = class {
     return new Response(value);
   }
 };
-var Durability = class {};
-var src_default = {
-  async fetch({ headers, cf, method, url }, env, ctx) {
+const Durability = class { };
+const src_default = {
+  async fetch({ headers, cf, method, url }, env: Env, ctx: EventContext) {
     try {
       console.log({
         SOMETHING: env.SOMETHING,
@@ -38,7 +39,7 @@ var src_default = {
         `${JSON.stringify(
           {
             SOMETHING: env.SOMETHING,
-            CF_SECRET: env.ABC,
+            CF_SECRET: (env as any).ABC,
             method,
             url,
             headers: Object.fromEntries(headers.entries()),

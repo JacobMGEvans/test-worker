@@ -1,13 +1,10 @@
 name = "test-worker2"
 main = "src/index.ts"
-compatibility_date = "2022-09-01"
+compatibility_date = "2023-06-29"
 route = "jacobmgevans.com/test"
 usage_model = "bundled"
 env = {}
 
-[[migrations]]
-tag = "v1"
-new_classes = ["Durability"]
 [[migrations]]
 tag = "v2"
 new_classes = ["Durabilities"]
